@@ -1,24 +1,29 @@
 import React, { Component } from "react";
+
 import Home from "./HomeComponent";
 import Menu from "./MenuComponent";
-import DishDetail from "./DishdetailComponent";
-import Header from "./HeaderComponent";
+import About from "./AboutComponent";
 import Contact from "./ContactComponent";
+import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
-import { DISHES } from "../shared/dishes";
+import DishDetail from "./DishdetailComponent";
+
 import { COMMENTS } from "../shared/comments";
-import { PROMOTIONS } from "../shared/promotions";
+import { DISHES } from "../shared/dishes";
 import { LEADERS } from "../shared/leaders";
+import { PROMOTIONS } from "../shared/promotions";
+
 import { Switch, Route, Redirect } from "react-router-dom";
 
 class Main extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			dishes: DISHES,
 			comments: COMMENTS,
-			promotions: PROMOTIONS,
+			dishes: DISHES,
 			leaders: LEADERS,
+			promotions: PROMOTIONS,
 		};
 	}
 
@@ -27,10 +32,16 @@ class Main extends Component {
 			return (
 				<Home
 					dish={this.state.dishes.filter((dish) => dish.featured)[0]}
-					promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
+					promotion={
+						this.state.promotions.filter((promotion) => promotion.featured)[0]
+					}
 					leader={this.state.leaders.filter((leader) => leader.featured)[0]}
 				/>
 			);
+		};
+
+		const AboutUsPage = () => {
+			return <About leaders={this.state.leaders} />;
 		};
 
 		const DishWithId = ({ match }) => {
@@ -50,7 +61,8 @@ class Main extends Component {
 
 		return (
 			<div>
-				<Header />
+				<Header></Header>
+
 				<Switch>
 					<Route path='/home' component={HomePage} />
 					<Route
@@ -59,10 +71,12 @@ class Main extends Component {
 						component={() => <Menu dishes={this.state.dishes} />}
 					/>
 					<Route path='/menu/:dishId' component={DishWithId} />
+					<Route exact path='/aboutus' component={AboutUsPage} />
 					<Route exact path='/contactus' component={Contact} />
 					<Redirect to='/home' />
 				</Switch>
-				<Footer />
+
+				<Footer></Footer>
 			</div>
 		);
 	}
