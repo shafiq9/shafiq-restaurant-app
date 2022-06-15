@@ -46,6 +46,9 @@
       "last 1 safari version"
     ]
   },
+  "overrides": {
+    "autoprefixer": "10.4.5"
+  },
   "devDependencies": {
     "@types/react": "^18.0.12",
     "@types/react-redux": "^7.1.24"
