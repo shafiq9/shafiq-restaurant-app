@@ -20,10 +20,6 @@ const mapStateToProps = (state) => {
 	};
 };
 class Main extends Component {
-	// constructor(props) {
-	// 	super(props);
-	// }
-
 	render() {
 		const HomePage = () => {
 			return (
@@ -34,10 +30,6 @@ class Main extends Component {
 				/>
 			);
 		};
-
-		// const AboutUsPage = () => {
-		// 	return <About leaders={this.props.leaders} />;
-		// };
 
 		const DishWithId = ({ match }) => {
 			return (
@@ -56,7 +48,7 @@ class Main extends Component {
 
 		return (
 			<div>
-				<Header></Header>
+				<Header />
 
 				<Switch>
 					<Route path='/home' component={HomePage} />
@@ -75,7 +67,7 @@ class Main extends Component {
 					<Redirect to='/home' />
 				</Switch>
 
-				<Footer></Footer>
+				<Footer />
 			</div>
 		);
 	}
