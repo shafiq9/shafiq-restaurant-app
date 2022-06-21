@@ -190,7 +190,7 @@ function RenderDish({ dish }) {
 	}
 }
 
-function RenderComments({ dish, comments }) {
+function RenderComments({ dish, comments, addComment, dishId }) {
 	if (comments == null) {
 		return <div></div>;
 	}
@@ -213,7 +213,12 @@ function RenderComments({ dish, comments }) {
 		<div className='col-12 col-md-5 m-1'>
 			<h4> Comments </h4>
 			<ul className='list-unstyled'>{cmnts}</ul>
-			<CommentForm dish={dish} comments={comments} />
+			<CommentForm
+				dish={dish}
+				comments={comments}
+				dishId={dishId}
+				addComment={addComment}
+			/>
 		</div>
 	);
 }
@@ -243,7 +248,12 @@ const DishDetail = (props) => {
 
 			<div className='row'>
 				<RenderDish dish={props.dish} />
-				<RenderComments dish={props.dish} comments={props.comments} />
+				<RenderComments
+					dish={props.dish}
+					comments={props.comments}
+					addComment={props.addComment}
+					dishId={props.dish.id}
+				/>
 			</div>
 		</div>
 	);
