@@ -206,17 +206,23 @@ function RenderComments({ dish, comments, postComment, dishId }) {
 	}
 	const cmnts = comments.map((comment) => {
 		return (
-			<li key={comment.id}>
-				<p>{comment.comment}</p>
-				<p>
-					-- {comment.author}, &nbsp;
-					{new Intl.DateTimeFormat("en-US", {
-						year: "numeric",
-						month: "long",
-						day: "2-digit",
-					}).format(new Date(comment.date))}
-				</p>
-			</li>
+			<ul className='list-unstyled'>
+				<Stagger in>
+					<Fade in>
+						<li key={comment.id}>
+							<p>{comment.comment}</p>
+							<p>
+								-- {comment.author}, &nbsp;
+								{new Intl.DateTimeFormat("en-US", {
+									year: "numeric",
+									month: "long",
+									day: "2-digit",
+								}).format(new Date(comment.date))}
+							</p>
+						</li>
+					</Fade>
+				</Stagger>
+			</ul>
 		);
 	});
 	return (

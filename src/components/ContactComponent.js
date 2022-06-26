@@ -1,22 +1,24 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
 	Button,
-	Row,
-	Col,
 	Label,
+	Col,
+	Row,
 } from "reactstrap";
-import { Control, Form, Errors, actions } from "react-redux-form";
 import { Link } from "react-router-dom";
 
-const required = (val) => val && val.length;
+import { Control, LocalForm, Form, Errors, actions } from "react-redux-form";
+
+//// validators
+const required = (val) => val && val.length; //value > 0
 const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
 const isNumber = (val) => !isNaN(Number(val));
 const validEmail = (val) =>
 	/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+
 class Contact extends Component {
 	constructor(props) {
 		super(props);
@@ -25,10 +27,19 @@ class Contact extends Component {
 	}
 
 	handleSubmit(values) {
-		console.log("Current State is: " + JSON.stringify(values));
-		alert("Current State is: " + JSON.stringify(values));
+		// console.log("Current State is: " + JSON.stringify( values ) );
+		// alert("Current State is: " + JSON.stringify( values ) );
+
+		this.props.postFeedback(
+			values.firstname,
+			values.lastname,
+			values.telnum,
+			values.email,
+			values.agree,
+			values.contactType,
+			values.message
+		);
 		this.props.resetFeedbackForm();
-		// event.preventDefault();
 	}
 
 	render() {
@@ -41,11 +52,13 @@ class Contact extends Component {
 						</BreadcrumbItem>
 						<BreadcrumbItem active>Contact Us</BreadcrumbItem>
 					</Breadcrumb>
+
 					<div className='col-12'>
 						<h3>Contact Us</h3>
 						<hr />
 					</div>
 				</div>
+
 				<div className='row row-content'>
 					<div className='col-12'>
 						<h3>Location Information</h3>
@@ -95,16 +108,18 @@ class Contact extends Component {
 
 				<div className='row row-content'>
 					<div className='col-12'>
-						<h3>Send us your Feedback</h3>
+						<h3> Send us your feedback</h3>
 					</div>
 
 					<div className='col-12 col-md-9'>
 						<Form
 							model='feedback'
 							onSubmit={(values) => this.handleSubmit(values)}
+							resetOnSubmit={true}
 						>
+							{/* firstname */}
 							<Row className='form-group'>
-								<Label htmlFor='firstname' md={2}>
+								<Label htmlFor='firstName' md={2}>
 									First Name
 								</Label>
 								<Col md={10}>
@@ -126,12 +141,14 @@ class Contact extends Component {
 										show='touched'
 										messages={{
 											required: "Required",
-											minLength: "Must be greater than 2 characters",
+											minLength: "Must be greater that 2 characters",
 											maxLength: "Must be 15 characters or less",
 										}}
-									/>
+									></Errors>
 								</Col>
 							</Row>
+
+							{/* lastname */}
 							<Row className='form-group'>
 								<Label htmlFor='lastname' md={2}>
 									Last Name
@@ -161,6 +178,8 @@ class Contact extends Component {
 									/>
 								</Col>
 							</Row>
+
+							{/* telphone */}
 							<Row className='form-group'>
 								<Label htmlFor='telnum' md={2}>
 									Contact Tel.
@@ -192,6 +211,8 @@ class Contact extends Component {
 									/>
 								</Col>
 							</Row>
+
+							{/* email */}
 							<Row className='form-group'>
 								<Label htmlFor='email' md={2}>
 									Email
@@ -219,6 +240,8 @@ class Contact extends Component {
 									/>
 								</Col>
 							</Row>
+
+							{/* ? */}
 							<Row className='form-group'>
 								<Col md={{ size: 6, offset: 2 }}>
 									<div className='form-check'>
@@ -228,21 +251,24 @@ class Contact extends Component {
 												name='agree'
 												className='form-check-input'
 											/>{" "}
-											<strong>May we contact you?</strong>
+											<strong>May we contact you? </strong>
 										</Label>
 									</div>
 								</Col>
+
 								<Col md={{ size: 3, offset: 1 }}>
 									<Control.select
 										model='.contactType'
-										name='contactType'
 										className='form-control'
+										name='contactType'
 									>
 										<option>Tel.</option>
 										<option>Email</option>
 									</Control.select>
 								</Col>
 							</Row>
+
+							{/* feedback */}
 							<Row className='form-group'>
 								<Label htmlFor='message' md={2}>
 									Your Feedback
@@ -257,6 +283,8 @@ class Contact extends Component {
 									/>
 								</Col>
 							</Row>
+
+							{/* submit button */}
 							<Row className='form-group'>
 								<Col md={{ size: 10, offset: 2 }}>
 									<Button type='submit' color='primary'>
@@ -271,4 +299,5 @@ class Contact extends Component {
 		);
 	}
 }
+
 export default Contact;
