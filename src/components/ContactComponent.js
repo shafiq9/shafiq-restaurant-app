@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 import { Control, LocalForm, Form, Errors, actions } from "react-redux-form";
 
-//// validators
 const required = (val) => val && val.length; //value > 0
 const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
@@ -27,9 +26,6 @@ class Contact extends Component {
 	}
 
 	handleSubmit(values) {
-		// console.log("Current State is: " + JSON.stringify( values ) );
-		// alert("Current State is: " + JSON.stringify( values ) );
-
 		this.props.postFeedback(
 			values.firstname,
 			values.lastname,
@@ -105,7 +101,6 @@ class Contact extends Component {
 						</div>
 					</div>
 				</div>
-
 				<div className='row row-content'>
 					<div className='col-12'>
 						<h3> Send us your feedback</h3>
@@ -117,7 +112,6 @@ class Contact extends Component {
 							onSubmit={(values) => this.handleSubmit(values)}
 							resetOnSubmit={true}
 						>
-							{/* firstname */}
 							<Row className='form-group'>
 								<Label htmlFor='firstName' md={2}>
 									First Name
@@ -147,8 +141,6 @@ class Contact extends Component {
 									></Errors>
 								</Col>
 							</Row>
-
-							{/* lastname */}
 							<Row className='form-group'>
 								<Label htmlFor='lastname' md={2}>
 									Last Name
@@ -178,8 +170,6 @@ class Contact extends Component {
 									/>
 								</Col>
 							</Row>
-
-							{/* telphone */}
 							<Row className='form-group'>
 								<Label htmlFor='telnum' md={2}>
 									Contact Tel.
@@ -211,8 +201,6 @@ class Contact extends Component {
 									/>
 								</Col>
 							</Row>
-
-							{/* email */}
 							<Row className='form-group'>
 								<Label htmlFor='email' md={2}>
 									Email
@@ -240,8 +228,6 @@ class Contact extends Component {
 									/>
 								</Col>
 							</Row>
-
-							{/* ? */}
 							<Row className='form-group'>
 								<Col md={{ size: 6, offset: 2 }}>
 									<div className='form-check'>
@@ -250,12 +236,11 @@ class Contact extends Component {
 												model='.agree'
 												name='agree'
 												className='form-check-input'
-											/>{" "}
+											/>
 											<strong>May we contact you? </strong>
 										</Label>
 									</div>
 								</Col>
-
 								<Col md={{ size: 3, offset: 1 }}>
 									<Control.select
 										model='.contactType'
@@ -267,8 +252,6 @@ class Contact extends Component {
 									</Control.select>
 								</Col>
 							</Row>
-
-							{/* feedback */}
 							<Row className='form-group'>
 								<Label htmlFor='message' md={2}>
 									Your Feedback
@@ -283,8 +266,6 @@ class Contact extends Component {
 									/>
 								</Col>
 							</Row>
-
-							{/* submit button */}
 							<Row className='form-group'>
 								<Col md={{ size: 10, offset: 2 }}>
 									<Button type='submit' color='primary'>
