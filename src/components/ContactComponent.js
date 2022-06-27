@@ -62,18 +62,20 @@ class Contact extends Component {
 					<div className='col-12 col-sm-4 offset-sm-1'>
 						<h5>Our Address</h5>
 						<address>
-							121, Clear Water Bay Road
+							111, Nazim-Ud-Din Road
 							<br />
-							Clear Water Bay, Kowloon
+							F8/4, St55
 							<br />
-							HONG KONG
+							Islamabad, Pakistan
 							<br />
-							<i className='fa fa-phone'></i>: +852 1234 5678
+							<i className='fa fa-phone'></i>: +92 1234 5678
 							<br />
-							<i className='fa fa-fax'></i>: +852 8765 4321
+							<i className='fa fa-fax'></i>: +92 8765 4321
 							<br />
 							<i className='fa fa-envelope'></i>:{" "}
-							<a href='mailto:confusion@food.net'>confusion@food.net</a>
+							<a href='mailto:shafiqrestuaran@food.net'>
+								shafiqrestuaran@food.net
+							</a>
 						</address>
 					</div>
 					<div className='col-12 col-sm-6 offset-sm-1'>

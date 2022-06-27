@@ -26,18 +26,20 @@ function Footer(props) {
 					<div className='col-7 col-sm-5'>
 						<h5>Our Address</h5>
 						<address>
-							121, Clear Water Bay Road
+							111, Nazim-Ud-Din Road
 							<br />
-							Clear Water Bay, Kowloon
+							F8/4, St55
 							<br />
-							HONG KONG
+							Islamabad, Pakistan
 							<br />
-							<i className='fa fa-phone fa-lg'></i>: +852 1234 5678
+							<i className='fa fa-phone fa-lg'></i>: +92 1234 5678
 							<br />
-							<i className='fa fa-fax fa-lg'></i>: +852 8765 4321
+							<i className='fa fa-fax fa-lg'></i>: +92 8765 4321
 							<br />
 							<i className='fa fa-envelope fa-lg'></i>:{" "}
-							<a href='mailto:confusion@food.net'>confusion@food.net</a>
+							<a href='mailto:shafiqrestuaran@food.net'>
+								shafiqrestuaran@food.net
+							</a>
 						</address>
 					</div>
 					<div className='col-12 col-sm-4 align-self-center'>
@@ -80,7 +82,7 @@ function Footer(props) {
 				</div>
 				<div className='row justify-content-center'>
 					<div className='col-auto'>
-						<p>© Copyright 2018 Ristorante Con Fusion</p>
+						<p>© Copyright 2022 Shafiq Restuarant</p>
 					</div>
 				</div>
 			</div>
